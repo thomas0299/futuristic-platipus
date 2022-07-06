@@ -19,7 +19,3 @@ import os
 from sodapy import Socrata
 
 #for modelling
-
-
-
-
