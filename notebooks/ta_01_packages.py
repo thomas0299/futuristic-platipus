@@ -19,3 +19,7 @@ import os
 from sodapy import Socrata
 
 #for modelling
+
+#For the sake of output, we disable warnings. All warnings related to the version of libraries
+import warnings
+warnings.filterwarnings('ignore')
