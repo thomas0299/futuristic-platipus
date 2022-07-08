@@ -9,6 +9,8 @@ from datetime import datetime, date
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from IPython.display import Image
+
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
