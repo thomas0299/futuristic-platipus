@@ -21,6 +21,8 @@ import os
 from sodapy import Socrata
 
 #for modelling
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.feature_selection import VarianceThreshold
 
 #For the sake of output, we disable warnings. All warnings related to the version of libraries
 import warnings
