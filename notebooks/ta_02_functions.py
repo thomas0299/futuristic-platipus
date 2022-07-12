@@ -113,11 +113,11 @@ def box_loop(X,y):
     return: subplots with a boxplot for each numerical independent variable with categorical dependent variable
     '''  
     #Creating subplot for readability
-    plt.subplots(19,2, figsize=(20,100))
+    plt.subplots(20,2, figsize=(20,100))
     
     #Loop through all independent variables and create scatter plot with dependent variable
     for i, col in enumerate(X.columns, 1):
-        plt.subplot(19,2,i)
+        plt.subplot(20,2,i)
         sns.boxplot(y=X[col], x=y)
         plt.ylabel(X[col].name)
         plt.xlabel(y.name)
