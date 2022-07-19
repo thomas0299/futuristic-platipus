@@ -10,9 +10,7 @@ from datetime import datetime, date
 #for visualisations
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 from IPython.display import Image
-
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
@@ -25,13 +23,22 @@ from sodapy import Socrata
 #for modelling
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
+
+from sklearn.decomposition import PCA
 from sklearn.feature_selection import VarianceThreshold
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+
+
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+
 from sklearn.metrics import roc_auc_score, roc_curve, plot_roc_curve, auc, precision_recall_curve, precision_recall_fscore_support
 from sklearn.metrics import classification_report, plot_confusion_matrix, confusion_matrix
+
 from sklearn.pipeline import Pipeline
-from sklearn.decomposition import PCA
+
 from imblearn.over_sampling import SMOTE
 
 from tempfile import mkdtemp
@@ -170,8 +177,8 @@ def box_loop(X,y):
     plt.tight_layout()
     plt.show()
 
-    # function to run a grid search cross validation on defined set of estimators and parameters
-def pipeline_cross_val(estimator, param, X_training, y_training, X_testing, y_testing):
+# function to run a grid search cross validation on defined set of estimators and parameters
+def pipeline_cross_val_grid(estimator, param, X_training, y_training, X_testing, y_testing):
     '''
     param estimator: dictionary of transformers/models
     param param: dictionary of hyperparameters
@@ -200,6 +207,44 @@ def pipeline_cross_val(estimator, param, X_training, y_training, X_testing, y_te
 
     # cross validating with training set
     fitted_search = grid_search.fit(X_training, y_training)
+
+    # getting results
+    print(
+        f"The model with the best CV score has the following parameters: {fitted_search.best_params_}.")
+    print(
+        f"The best model has an accuracy score of {fitted_search.score(X_testing, y_testing)} on the test set")
+
+
+# function to run a randomised search cross validation on defined set of estimators and parameters
+def pipeline_cross_val_random(estimator, param, X_training, y_training, X_testing, y_testing):
+    '''
+    param estimator: dictionary of transformers/models
+    param param: dictionary of hyperparameters
+    param X_training: training independent variables
+    param y_training: training dependent variable
+    param X_testing: testing independent variables
+    param y_testing: testing dependent variable
+
+    return: prints model best parameters found from random search crosss validation and prints score on test set
+    '''
+
+    # make temporary folder to store results
+    cachedir = mkdtemp()
+
+    # setting up which transformers/scalers we want to grid search
+    estimators = estimator
+
+    # setting up the pipeline
+    pipeline = Pipeline(estimators, memory=cachedir)
+
+    # defining parameters we want to compare
+    params = param
+
+    # instantiating grid search
+    rand_search = RandomizedSearchCV(pipeline, param_distributions=params)
+
+    # cross validating with training set
+    fitted_search = rand_search.fit(X_training, y_training)
 
     # getting results
     print(
@@ -332,6 +377,3 @@ def get_scores(model, X, y):
     precision, recall, f1, support = precision_recall_fscore_support(y, y_proba, average='weighted')
 
     return accuracy, precision, recall, f1
-
-
-
