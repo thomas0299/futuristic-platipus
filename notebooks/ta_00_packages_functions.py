@@ -36,6 +36,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
+from sklearn.ensemble import AdaBoostClassifier
 
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.inspection import permutation_importance
