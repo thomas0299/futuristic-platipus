@@ -34,7 +34,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import LinearSVC
 
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.inspection import permutation_importance
 from sklearn.metrics import roc_auc_score, roc_curve, plot_roc_curve, auc, precision_recall_curve, precision_recall_fscore_support
 from sklearn.metrics import classification_report, plot_confusion_matrix, confusion_matrix
 
