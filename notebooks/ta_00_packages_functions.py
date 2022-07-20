@@ -33,6 +33,7 @@ from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import roc_auc_score, roc_curve, plot_roc_curve, auc, precision_recall_curve, precision_recall_fscore_support
 from sklearn.metrics import classification_report, plot_confusion_matrix, confusion_matrix
@@ -265,7 +266,7 @@ def run_PCA(components, X_train, X_test):
     my_PCA = PCA(n_components=components, random_state=1)
 
     # fit with training
-    X_train_PCA = my_PCA.fit(X_train).transform(X_train)
+    X_train_PCA = my_PCA.fit_transform(X_train)
 
     # transform test
     X_test_PCA = my_PCA.transform(X_test)
@@ -377,3 +378,23 @@ def get_scores(model, X, y):
     precision, recall, f1, support = precision_recall_fscore_support(y, y_proba, average='weighted')
 
     return accuracy, precision, recall, f1
+
+# function to scale our data
+def scaling(scaler, X_train, X_test):
+    '''
+    param scaler: type of scaler to use
+    param X_train: training independent variables
+    param X_test: testing independent variables
+
+    return: scaled X_train and X_test
+    '''
+    # instantiate PCA
+    my_scaler = scaler
+
+    # fit with training
+    X_train_scaled = my_scaler.fit_transform(X_train)
+
+    # transform test
+    X_test_scaled = my_scaler.transform(X_test)
+
+    return X_train_scaled, X_test_scaled
