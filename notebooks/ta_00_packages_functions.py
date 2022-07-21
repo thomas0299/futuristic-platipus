@@ -37,6 +37,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 from sklearn.ensemble import AdaBoostClassifier
+from xgboost import XGBClassifier
 
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.inspection import permutation_importance
@@ -46,6 +47,7 @@ from sklearn.metrics import classification_report, plot_confusion_matrix, confus
 from sklearn.pipeline import Pipeline
 
 from imblearn.over_sampling import SMOTE
+from scipy import stats
 
 from tempfile import mkdtemp
 import joblib
@@ -403,3 +405,6 @@ def scaling(scaler, X_train, X_test):
     X_test_scaled = my_scaler.transform(X_test)
 
     return X_train_scaled, X_test_scaled
+    
+#setting color palette for bar chart
+palette ={"positive": "royalblue", "neutral": "silver", "negative": "firebrick"}
