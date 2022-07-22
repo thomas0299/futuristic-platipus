@@ -1,5 +1,5 @@
 ################################
-#1. importing all relevant packages
+#A. importing all relevant packages
 ################################
 
 #for data wrangling
@@ -57,14 +57,27 @@ import time
 import warnings
 warnings.filterwarnings('ignore')
 
-
-
 ################################
-# 2. creating functions
+# B. some constant variables
 ################################
 
+# defining working directory
+data_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/data/'
+model_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/models/'
+dictionary_filepath='/Users/thomasadler/Desktop/futuristic-platipus/data_dictionary/'
+images_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/images/'
 
-#function to convert an object column to a datetime
+#set random seed for consistent results
+rand_seed=1
+    
+#setting color palette for bar chart
+palette ={"positive": "royalblue", "neutral": "silver", "negative": "firebrick"}
+
+################################
+# C. creating functions
+################################
+
+#1. convert an object column to a datetime
 def date_converter(df, col):
     '''
     param df: dataframe
@@ -75,7 +88,7 @@ def date_converter(df, col):
     '''
     df[col]=pd.to_datetime(df[col])
 
-#function to convert an object column to a float
+#2. convert an object column to a float
 def float_converter(df, col):
     '''
     param df: dataframe
@@ -86,7 +99,7 @@ def float_converter(df, col):
     '''
     df[[col]]=df[[col]].astype('float32')
 
-#function to fill missing values with regional median
+#3. fill missing values with regional median
 def missing_to_regional_median(df, col, region):
     '''
     param df: dataframe
@@ -98,8 +111,7 @@ def missing_to_regional_median(df, col, region):
     df[col] = df[col].fillna(df.groupby(region)[col].transform('median'))
 
 
-#Function calculating the correlation between X (independent variables) and y (dependent variable)
-
+#4. calculating the correlation between X (independent variables) and y (dependent variable)
 def correl_loop(X, y):
     '''
     param X: dataframe or series of independent variables
@@ -141,8 +153,7 @@ def correl_loop(X, y):
         print(' -------------- ')
 
 
-# Check LINEARITY with function plotting each independent with the dependent variable
-
+#5. Check LINEARITY with function plotting each independent with the dependent variable
 def plot_loop(X,y):
     '''
     param X: dataframe or series of independent variables
@@ -164,7 +175,7 @@ def plot_loop(X,y):
     plt.show() 
 
 
-#Function showing boxplots to look at correlation between all independent variables and dependent variable
+#6. boxplots to look at correlation between all independent variables and dependent variable
 def box_loop(X,y):
     '''
     param X: dataframe or series of independent variables
@@ -185,7 +196,7 @@ def box_loop(X,y):
     plt.tight_layout()
     plt.show()
 
-# function to run a grid search cross validation on defined set of estimators and parameters
+#7. run a grid search cross validation on defined set of estimators and parameters
 def pipeline_cross_val_grid(estimator, param, X_training, y_training, X_testing, y_testing):
     '''
     param estimator: dictionary of transformers/models
@@ -223,7 +234,7 @@ def pipeline_cross_val_grid(estimator, param, X_training, y_training, X_testing,
         f"The best model has an accuracy score of {fitted_search.score(X_testing, y_testing)} on the test set")
 
 
-# function to run a randomised search cross validation on defined set of estimators and parameters
+#8. run a randomised search cross validation on defined set of estimators and parameters
 def pipeline_cross_val_random(estimator, param, X_training, y_training, X_testing, y_testing):
     '''
     param estimator: dictionary of transformers/models
@@ -260,7 +271,7 @@ def pipeline_cross_val_random(estimator, param, X_training, y_training, X_testin
     print(
         f"The best model has an accuracy score of {fitted_search.score(X_testing, y_testing)} on the test set")
 
-# function to PCA transform independent variables
+#9. PCA transform independent variables
 def run_PCA(components, X_train, X_test):
     '''
     param components: number of components (float between 0 and 1 or whole number) for PCA to choose from
@@ -284,8 +295,7 @@ def run_PCA(components, X_train, X_test):
 
     return X_train_PCA, X_test_PCA
 
-#function to plot confusion matrix
-#taken and modified from https://www.stackvidhya.com/plot-confusion-matrix-in-python-and-why/
+#10. plot confusion matrix -- modified from https://www.stackvidhya.com/plot-confusion-matrix-in-python-and-why/
 def conf_matrix_plot(model, X, y):
     '''
     param model: model instantiated and fitted to training set
@@ -322,7 +332,7 @@ def conf_matrix_plot(model, X, y):
 
     plt.show()
 
-# function to print classification report and calculate false/true positive rates for ROC visualisation
+#11. print classification report and calculate false/true positive rates for ROC visualisation
 def print_report(model, X, y):
     '''
     param model: model instantiated and fitted to training set
@@ -365,7 +375,7 @@ def print_report(model, X, y):
 
     return fpr, tpr, roc_auc, precision, recall, pr_auc, time_predict
 
-# function to get accuracy scores
+#12. get accuracy scores
 def get_scores(model, X, y):
     '''
     param model: model instantiated and fitted to training set
@@ -386,7 +396,7 @@ def get_scores(model, X, y):
 
     return accuracy, precision, recall, f1
 
-# function to scale our data
+#13. scale our data
 def scaling(scaler, X_train, X_test):
     '''
     param scaler: type of scaler to use
@@ -405,6 +415,109 @@ def scaling(scaler, X_train, X_test):
     X_test_scaled = my_scaler.transform(X_test)
 
     return X_train_scaled, X_test_scaled
+
+#14. compare ROCs on train and test
+def plot_curve_roc(model_name, fpr_train_base, tpr_train_base, roc_auc_train_base, fpr_train_opt, tpr_train_opt, roc_auc_train_opt, fpr_test_base,
+ tpr_test_base, roc_auc_test_base,  fpr_test_opt, tpr_test_opt, roc_auc_test_opt):
+
+    plt.subplots(1,2, figsize=(10,5))
+    plt.subplot(1,2,1)
+    plt.plot([0,1], [0,1], color='black', linestyle='--')
+    plt.title('Receiver Operating Characteristic (ROC) Curve - {model_name} Train')
+    plt.plot(fpr_train_base, tpr_train_base, color='green', lw=2,
+        label='Baseline AUC = %0.2f' % roc_auc_train_base)
+    plt.plot(fpr_train_opt, tpr_train_opt, color='red', lw=2,
+        label='Optimised AUC = %0.2f' % roc_auc_train_opt)
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.legend(loc="best")
+    plt.tight_layout()
+    plt.grid()
+
+    plt.subplot(1,2,2)
+    plt.plot([0,1], [0,1], color='black', linestyle='--')
+    plt.title('Receiver Operating Characteristic (ROC) Curve - {model_name} Test')
+    plt.plot(fpr_test_base, tpr_test_base, color='green', lw=2,
+        label='Baseline AUC = %0.2f' % roc_auc_test_base)
+    plt.plot(fpr_test_opt, tpr_test_opt, color='red', lw=2,
+        label='Optimised AUC = %0.2f' % roc_auc_test_opt)
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.legend(loc="best")
+    plt.tight_layout()
+    plt.grid()
+
+    plt.show()
+
+#15. compare Precision/Recall Curve on train and test
+def plot_curve_prec_recall(model_name, recall_train_base_plot, precision_train_base_plot, pr_auc_train_base, recall_train_opt_plot, precision_train_opt_plot, pr_auc_train_opt,
+ recall_test_base_plot, precision_test_base_plot,  pr_auc_test_base, recall_test_opt_plot, precision_test_opt_plot, pr_auc_test_opt):
+
+    plt.subplots(1,2, figsize=(10,5))
+    plt.subplot(1,2,1)
+    plt.plot([1,0], [0,1], color='black', linestyle='--')
+    plt.title('Precision/Recall Curve - {model_name} Train')
+    plt.plot(recall_train_base_plot, precision_train_base_plot, color='green', lw=2,
+        label='Baseline AUC = %0.2f' % pr_auc_train_base)
+    plt.plot(recall_train_opt_plot, precision_train_opt_plot, color='red', lw=2,
+        label='Optimised AUC = %0.2f' % pr_auc_train_opt)
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.legend(loc="best")
+    plt.tight_layout()
+    plt.grid()
+
+    plt.subplot(1,2,2)
+    plt.plot([1,0], [0,1], color='black', linestyle='--')
+    plt.title('Precision/Recall Curve - {model_name} Test')
+    plt.plot(recall_test_base_plot, precision_test_base_plot, color='green', lw=2,
+        label='Baseline AUC = %0.2f' % pr_auc_test_base)
+    plt.plot(recall_test_opt_plot, precision_test_opt_plot, color='red', lw=2,
+        label='Baseline AUC = %0.2f' % pr_auc_test_opt)
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.legend(loc="best")
+    plt.tight_layout()
+    plt.grid()
+
+    plt.show()
+
+#16. bar chart of feature/coefficient importance
+def coeff_bar_chart(features, X_columns, t=True):
+    if t==True:
+
+        #what are the most important coefficients for the best model?
+        coefficients=pd.DataFrame(data=features, columns=X_columns).T.reset_index()
+
+    else:
+        coefficients=pd.DataFrame(data=features, columns=X_columns).reset_index()
     
-#setting color palette for bar chart
-palette ={"positive": "royalblue", "neutral": "silver", "negative": "firebrick"}
+    #rename columns
+    coefficients.set_axis(['feature', 'coefficient'], axis=1, inplace=True)
+
+    #sorting values
+    coefficients=coefficients.sort_values('coefficient', ascending=False)
+
+    #get our hypotheses
+    hypotheses_df=pd.read_csv(data_filepath + 'ta_hypotheses.csv', index_col=False)
+
+    #merge coefficients and hypotheses
+    coefficients_df=pd.merge(
+        coefficients,
+        hypotheses_df,
+        how="left",
+        on='feature',
+        copy=True,
+    )
+    # visualise coefficient importance
+    plt.figure(figsize=(10,10))
+
+    sns.barplot(data=coefficients_df, x='coefficient', y='feature', hue='hypotheses', palette=palette, orient='horizontal', dodge=False)
+
+    plt.xlabel('Coefficient')
+    plt.ylabel('Feature')
+
+    plt.xticks()
+    plt.yticks()
+    plt.legend()
+    plt.show()
