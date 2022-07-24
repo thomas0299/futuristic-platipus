@@ -5,7 +5,13 @@
 #for data wrangling
 import numpy as np
 import pandas as pd
-from datetime import datetime, date
+from scipy import stats
+from imblearn.over_sampling import SMOTE
+
+#for api requests
+import requests
+import os
+from sodapy import Socrata
 
 #for visualisations
 import matplotlib.pyplot as plt
@@ -15,20 +21,17 @@ import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 
-#for api requests
-import requests
-import os
-from sodapy import Socrata
 
 #for modelling
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 from sklearn.decomposition import PCA
 from sklearn.feature_selection import VarianceThreshold
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 
+from sklearn.model_selection import train_test_split, cross_val_score, RandomizedSearchCV, GridSearchCV
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.inspection import permutation_importance
+from sklearn.pipeline import Pipeline
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
@@ -37,21 +40,23 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 from sklearn.ensemble import AdaBoostClassifier
+
+from sklearn.metrics import roc_auc_score, roc_curve, plot_roc_curve, auc, precision_recall_curve, precision_recall_fscore_support,\
+    classification_report, plot_confusion_matrix, confusion_matrix
+
 from xgboost import XGBClassifier
 
-from sklearn.calibration import CalibratedClassifierCV
-from sklearn.inspection import permutation_importance
-from sklearn.metrics import roc_auc_score, roc_curve, plot_roc_curve, auc, precision_recall_curve, precision_recall_fscore_support
-from sklearn.metrics import classification_report, plot_confusion_matrix, confusion_matrix
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+import shap
 
-from sklearn.pipeline import Pipeline
-
-from imblearn.over_sampling import SMOTE
-from scipy import stats
-
+#various other
 from tempfile import mkdtemp
 import joblib
+from datetime import datetime, date
 import time
+import glob
 
 #For the sake of output, we disable warnings. All warnings related to the version of libraries
 import warnings
@@ -490,7 +495,7 @@ def coeff_bar_chart(features, X_columns, t=True):
         coefficients=pd.DataFrame(data=features, columns=X_columns).T.reset_index()
 
     else:
-        coefficients=pd.DataFrame(data=features, columns=X_columns).reset_index()
+        coefficients=pd.DataFrame(data=features, index=X_columns).reset_index()
     
     #rename columns
     coefficients.set_axis(['feature', 'coefficient'], axis=1, inplace=True)
