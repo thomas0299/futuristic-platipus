@@ -1,0 +1,3 @@
+,Model,Parameters,Accuracy Train,Precision Train,Recall Train,F1 Train,ROC AUC Train,Accuracy Test,Precision Test,Recall Test,F1 Test,ROC AUC Test,Time Fit,Time Predict,Precision Non-functioning Test,Recall Non-functioning Test,F1 Non-functioning Test,Precision Functioning Test,Recall Functioning Test,F1 Functioning Test
+0,WPDx,Unknown,,,,,,,[0.80834636 0.80834439 0.8083527  ... 1.         1.         1.        ],"[1.00000000e+00 9.99987281e-01 9.99987281e-01 ... 5.34194828e-04
+ 5.21475904e-04 0.00000000e+00]",,0.7889022407467154,,,0.54,0.4,0.46,0.87,0.92,0.89
