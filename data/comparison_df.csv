@@ -1,0 +1,13 @@
+,Accuracy Metrics,Model,Score
+0,Precision Non-functioning Test,XGBoost,0.45
+1,Recall Non-functioning Test,XGBoost,0.65
+2,F1 Non-functioning Test,XGBoost,0.53
+3,Precision Functioning Test,XGBoost,0.9
+4,Recall Functioning Test,XGBoost,0.8
+5,F1 Functioning Test,XGBoost,0.85
+6,Precision Non-functioning Test,WPDx,0.54
+7,Recall Non-functioning Test,WPDx,0.4
+8,F1 Non-functioning Test,WPDx,0.46
+9,Precision Functioning Test,WPDx,0.87
+10,Recall Functioning Test,WPDx,0.92
+11,F1 Functioning Test,WPDx,0.89
