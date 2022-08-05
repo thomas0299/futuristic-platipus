@@ -523,6 +523,8 @@ def coeff_bar_chart(features, X_columns, t=True):
     plt.xlabel('Coefficient')
     plt.ylabel('Feature')
 
+    plt.title('Feature importance')
+    
     plt.xticks()
     plt.yticks()
     plt.legend()

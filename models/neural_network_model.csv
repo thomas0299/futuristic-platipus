@@ -1,2 +1,2 @@
 ,Model,Parameters,Accuracy Train,Precision Train,Recall Train,F1 Train,ROC AUC Train,Accuracy Test,Precision Test,Recall Test,F1 Test,ROC AUC Test,Time Fit,Time Predict,Precision Non-functioning Test,Recall Non-functioning Test,F1 Non-functioning Test,Precision Functioning Test,Recall Functioning Test,Functioning Test
-0,Neural Network,"Hidden layer=16 nodes, Optimizer=Adam, Loss function=BinaryCrossentropy, Metric=BinaryAccuracy",,,,,0.8586117697927094,,,,,0.7886899395085116,323.8172631263733,0.7877979278564453,0.42,0.63,0.5,0.9,0.78,0.84
+0,Neural Network,"Hidden layer=16 nodes, Optimizer=Adam, Loss function=BinaryCrossentropy, Metric=BinaryAccuracy",,,,,0.8581960705709735,,,,,0.7834369436221573,201.17797303199768,0.9356811046600342,0.42,0.63,0.5,0.9,0.78,0.84
