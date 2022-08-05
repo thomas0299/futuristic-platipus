@@ -68,10 +68,10 @@ warnings.filterwarnings('ignore')
 ################################
 
 # defining working directory
-data_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/data/'
-model_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/models/'
-dictionary_filepath='/Users/thomasadler/Desktop/futuristic-platipus/data_dictionary/'
-images_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/images/'
+data_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/capstone/data/'
+model_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/capstone/models/'
+dictionary_filepath='/Users/thomasadler/Desktop/futuristic-platipus/capstone/data_dictionary/'
+images_filepath = '/Users/thomasadler/Desktop/futuristic-platipus/capstone/images/'
 
 #set random seed for consistent results
 rand_seed=1
