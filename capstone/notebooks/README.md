@@ -1,4 +1,4 @@
-This is the table of content for my code and notebooks:
+# Table of content for code and notebooks
 
 First, you will need to use the `environment.yml` environment with all relevant dependencies.
 
