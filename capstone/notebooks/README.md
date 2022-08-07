@@ -12,7 +12,7 @@ First, you will need to use the `environment.yml` environment with all relevant 
 
 5. Merging water, demographic and conflict data into one dataset. We end up with information for each water point
 
-6. EDA of all features, visualising information and feature engineering as we gain a better understanding of the data.
+6. EDA of all features, visualising information and feature engineering as we gain a better understanding of the data
 
 7. Introudcing the problem, aim and running a Logistic Regression
 
