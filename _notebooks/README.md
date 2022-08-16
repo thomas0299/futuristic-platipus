@@ -1,14 +1,39 @@
-# Auto-convert Jupyter Notebooks To Posts
+# Table of content for code and notebooks
 
-[`fastpages`](https://github.com/fastai/fastpages) will automatically convert [Jupyter](https://jupyter.org/) Notebooks saved into this directory as blog posts!
+First, you will need to use the `environment.yml` environment with all relevant dependencies.
 
-You must save your notebook with the naming convention `YYYY-MM-DD-*.ipynb`.  Examples of valid filenames are:
+1. All relevant packages imported, functions and variables defined. Werun this script in every subsequent notebook
 
-```shell
-2020-01-28-My-First-Post.ipynb
-2012-09-12-how-to-write-a-blog.ipynb
-```
+2. Accessing the WPDx API for water points in Uganda
 
-If you fail to name your file correctly, `fastpages` will automatically attempt to fix the problem by prepending the last modified date of your notebook. However, it is recommended that you name your files properly yourself for more transparency.
+3. Accessing demographic data from the Uganda Bureau of Statistics, dataset was manually downloaded then loaded in
 
-See [Writing Blog Posts With Jupyter](https://github.com/fastai/fastpages#writing-blog-posts-with-jupyter) for more details.
+4. Accessing the ACLED API for conflicts in Uganda
+
+5. Merging water, demographic and conflict data into one dataset. We end up with information for each water point
+
+6. EDA of all features, visualising information and feature engineering as we gain a better understanding of the data
+
+7. Introudcing the problem, aim and running a Logistic Regression
+
+8. K Nearest Neighbours
+
+9. Decision Tree
+
+10. Random Forest
+
+11. Gaussian Naïve Bayes
+
+12. Support Vector Machine
+
+13. AdaBoost
+
+14. XGBoost
+
+15. Neural Network
+
+16. Loading model results from the WPDx ML model as a benchmark and for future comparison
+
+17. Model comparison to choose best model and identify next steps
+
+ARCHIVED EDA. Initial EDA made to define my question and outcome variable. This notebook is very large and messy. This was purely for exploration's sake.
