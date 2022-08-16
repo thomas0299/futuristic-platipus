@@ -13,14 +13,16 @@ My name is Thomas, I am an economist transitioning into Data Science.
 - Loves weightlifting.
 
 Don't hesitate to get in touch:
+
+
 [Linkedin](https://www.linkedin.com/in/thomas-adler-31b372149/)
 
 
 [Medium](https://medium.com/@chalk_ball)
 
 
-[University email](mailto: thomas.adler.18@ucl.ac.uk)
+[University email](mailto:thomas.adler.18@ucl.ac.uk)
 
 
-[Personal email](mailto: thomas0299@gmail.com)
+[Personal email](mailto:thomas0299@gmail.com)
 
