@@ -14,7 +14,7 @@ github_repo: "futuristic-platipus"
 
 # OPTIONAL: override baseurl and url if using a custom domain
 # Note: leave out the trailing / from this value. 
-url: "https://thomas0299.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://thomas0299.github.io/futuristic-platipus/" # the base hostname & protocol for your site, e.g. http://example.com
 
 ###########################################################
 #########  Special Instructions for baseurl ###############
