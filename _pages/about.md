@@ -25,3 +25,6 @@ Don't hesitate to get in touch:
 \
 \
 [Personal email](mailto:thomas0299@gmail.com)
+\
+\
+![]({{site.baseurl}}/images/white_pic.jpeg)
