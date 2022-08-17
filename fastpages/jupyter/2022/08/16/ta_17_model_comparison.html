@@ -132,7 +132,6 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Uganda-Water-Infrastructure">Uganda Water Infrastructure </a></li>
 <li class="toc-entry toc-h1"><a href="#Model-comparison">Model comparison </a></li>
 <li class="toc-entry toc-h1"><a href="#Preparing-data">Preparing data </a></li>
 <li class="toc-entry toc-h1"><a href="#ROC-Curve-for-Train/Test">ROC Curve for Train/Test </a></li>
@@ -152,27 +151,6 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Uganda-Water-Infrastructure">
-<a class="anchor" href="#Uganda-Water-Infrastructure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uganda Water Infrastructure<a class="anchor-link" href="#Uganda-Water-Infrastructure"> </a>
-</h2>
-<ul>
-<li>toc: false</li>
-<li>branch: master</li>
-<li>badges: true</li>
-<li>comments: true</li>
-<li>categories: [fastpages, jupyter]</li>
-<li>hide: false</li>
-<li>search_exclude: true</li>
-<li>metadata_key1: metadata_value1</li>
-<li>metadata_key2: metadata_value2</li>
-</ul>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1610,7 +1588,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Our model performs much better on the recall for non-functioning water points, ours is more than 20 percentage points higher. This is the metric we care the most about. We also perform better on the precision of functioning points.</p>
 <p>On the other hand, our model performs not as well on the precision of non-functioning points and recall of functioning points.</p>
-<p>Overall, our model outperforms WPDx model and is a net improvement. We will quantify these improvements in our subsequent analysis.</p>
+<p>Overall, our model outperforms WPDx model and is a net improvement. It seems that introducing demographic and conflict data has enables us to better predict non-functioning water points. This is because water point functionality is closely intertwined with the political, social and economic landscape of a community and region. We will quantify these improvements in our subsequent analysis.</p>
 
 </div>
 </div>

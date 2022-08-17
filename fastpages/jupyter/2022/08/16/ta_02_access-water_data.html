@@ -84,7 +84,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      14 min read
+      15 min read
     
 </span></p>
 
@@ -134,6 +134,7 @@ window.onload = wrap_img;
     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#Business-Problem">Business Problem </a></li>
 <li class="toc-entry toc-h1"><a href="#Machine-Learning-Problem">Machine Learning Problem </a></li>
+<li class="toc-entry toc-h1"><a href="#Water-and-Conflict">Water and Conflict </a></li>
 <li class="toc-entry toc-h1"><a href="#Accessing-Water-Data">Accessing Water Data </a></li>
 </ul><!--
 #################################################
@@ -156,7 +157,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Uganda and sub-saharan Africa lack access to basic water services. Not having access to water puts lives at risk through improper sanitation, dehydration. It also reinforce the cycle of poverty and heavily impacts a population that heavily relies on subsistence farming. We want to enable the Ugandan government to repair water point quicker so citizens can have their basic needs and help communities develop and prosper.</p>
+<p>Uganda and sub-saharan Africa lack access to basic water services. Not having access to water puts lives at risk through improper sanitation, dehydration. It also reinforces the cycle of poverty and heavily impacts a population that heavily relies on subsistence farming. We want to enable the Ugandan government to repair and improve water points quicker and in a more efficient manner. Our model would be used on a monthly/yearly basis to plan and carry out repairs and improvements so that the population will benefit form as much water access as possible. Ideally, the on the ground actions that result from our predictions will get fed back into the model, so it can improve it's performance in the future. Ultimately we want Ugandan citizens to meet their basic needs and enable their communities to develop and prosper.</p>
 
 </div>
 </div>
@@ -174,6 +175,32 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Can we predict the functionality of water infrastructure to repair them quicker using Machine Learning?</strong></p>
+<p>Alternatively,</p>
+<p><strong>Using demographic, water infrastructure, and conflict data, can we develop a classification model that is able to identify non-functioning water points with a recall score greater than 40%?"</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Water-and-Conflict">
+<a class="anchor" href="#Water-and-Conflict" aria-hidden="true"><span class="octicon octicon-link"></span></a>Water and Conflict<a class="anchor-link" href="#Water-and-Conflict"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Water infrastructure and water access has been found to be a factor contributing to conflicts. However, the main findings form research is that demographic (socio-economic) situations are usually much more important in explaining conflict. This is why we will be using both to try to predict water functionality.</p>
+<p><strong>Relevant papers:</strong></p>
+<ul>
+<li><a href="https://journals.sagepub.com/doi/10.1177/0022343316651922">Detges, 2016</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0962629816302360">Detges, 2017</a></li>
+<li><a href="https://journals.sagepub.com/doi/10.1177/0022343320910777">Ide et al, 2020</a></li>
+<li><a href="https://www.hbuhaug.com/wp-content/uploads/2014/02/IS-2011-for-web.pdf">Theisen et al, 2012</a></li>
+</ul>
 
 </div>
 </div>
@@ -923,6 +950,14 @@ memory usage: 39.9+ MB
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>CAREFUL, INADVENRTETLY DROPPED <code>is_urban</code> due to mistake. If re-running the analysis, should account for this error.</strong></p>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
