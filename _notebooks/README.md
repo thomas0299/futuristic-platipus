@@ -37,3 +37,5 @@ First, you will need to use the `environment.yml` environment with all relevant 
 17. Model comparison to choose best model and identify next steps
 
 ARCHIVED EDA. Initial EDA made to define my question and outcome variable. This notebook is very large and messy. This was purely for exploration's sake.
+
+**NOTE that certain comments and interpretations do not always match perfectly certain outputs. This is because the model may have been re-ran, with some hyperparameters having slightly changed when running a random search cross validation. Since these small differences don't actually impact the performance of the models, we did not change our text every time.**
