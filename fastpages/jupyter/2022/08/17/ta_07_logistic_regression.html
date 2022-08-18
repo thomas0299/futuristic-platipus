@@ -76,7 +76,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Logistic Regression</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-17T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">6. Logistic Regression</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-17T00:00:00-05:00" itemprop="datePublished">
         Aug 17, 2022
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -919,7 +919,7 @@ The best model has an accuracy score of 0.8750768092934949 on the test set
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The best model here seems to have a much lower accuracy score, but hopefully it scores better on its precision and recall scores for non-functioning water points. Interestingly, the best model does not use PCA to reduce dimensions.</p>
+<p>The best model here seems to have a much lower accuracy score, but hopefully it scores better on its precision and recall scores for non-functioning water points. Interestingly, the best model does not use PCA to reduce dimensions. It seems that regularising with L2 (Ridge) is a better alternative than PCA dimensionality reduction. L2 reduces the number of features by decreasing certain coefficients to (or close to) 0.</p>
 
 </div>
 </div>
